@@ -32,8 +32,17 @@
 	<!-- Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Rubik:300,500,700" rel="stylesheet">
 
+	<!-- Animate Css -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+
 	<!-- Styles -->
 	<style>
+		:root {
+		  --animate-delay: 5s;
+		}
 		body {
 		  font-family: 'Rubik', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 		  font-size: calc(10px + 0.33vw);
@@ -72,6 +81,19 @@
 		  top: 0%;
 		}
 
+		/* Botones */
+		.btn {
+	    background-color: white;
+	    color: black;
+	    border: 2px solid black;
+	    border-radius: 4px;
+	    cursor: pointer;
+		}
+
+		.btn-active {
+			color: tomato;
+		}
+
 	</style>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -83,26 +105,69 @@
 
 	  gtag('config', 'G-SL6VFBHYQ5');
 	</script>
+
+	<!-- AlpineJs -->
+	<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
 </head>
 <body>
-  <h1>Hola.</h1>
-  <p style="font-weight:500; font-size:2.2em">
-    Mi nombre es <strong>Eddy</strong> <strong>Rufino</strong>.
-  </p>
-  <p>
-    Soy desarrollador web enfocado en crear y construir proyectos geniales utilizando <a href="https://laravel.com/" target="_blank">Laravel</a> y
-    <a href="https://vuejs.org" target="_blank">Vue.js</a>.
-    La mayor parte de mi trabajo es código abierto y está disponible públicamente en 
-    <a href="https://github.com/eddyrufino" target="_blank">GitHub</a>.
-  </p>
-  <p>
-    Quizá quieras seguirme en 
-    <a href="https://twitter.com/rufino_eddy" target="_blank">Twitter</a> y
-    <a href="https://medium.com/@eddyrufino" target="_blank">Medium</a>
-    para que tengas contenido más actualizado. En caso tengas alguna duda puedes enviarme un <a href="mailto:eddyjaair@gmail.com?Subject=Escribe%20el%20asunto%20del%20mail">Correo</a>.
-  </p>
-  <p>
-    Además de programar, disfruto montar bicicleta, salir a caminar e ir al cine.
-  </p>
+	<div x-data="{ tab: 'es' }">
+    <button :class="{ 'btn-active': tab === 'es' }"
+    	@click="tab = 'es'"
+    	class="btn">
+    	ES
+    </button>
+    <button :class="{ 'btn-active': tab === 'en' }"
+    	@click="tab = 'en'"
+    	class="btn">
+    	EN
+    </button>
+
+    <div x-show="tab === 'es'"
+			x-transition:enter="animate__animated animate__fadeIn"
+    >
+		  <h1>Hola.</h1>
+		  <p style="font-weight:500; font-size:2.2em">
+		    Mi nombre es <strong>Eddy</strong> <strong>Rufino</strong>.
+		  </p>
+		  <p>
+		    Soy desarrollador web enfocado en crear y construir proyectos geniales utilizando <a href="https://laravel.com/" target="_blank">Laravel</a> y
+		    <a href="https://vuejs.org" target="_blank">Vue.js</a>.
+		    La mayor parte de mi trabajo es código abierto y está disponible públicamente en 
+		    <a href="https://github.com/eddyrufino" target="_blank">GitHub</a>.
+		  </p>
+		  <p>
+		    Quizá quieras seguirme en 
+		    <a href="https://twitter.com/rufino_eddy" target="_blank">Twitter</a> y
+		    <a href="https://medium.com/@eddyrufino" target="_blank">Medium</a>
+		    para que tengas contenido más actualizado. En caso tengas alguna duda puedes enviarme un <a href="mailto:eddyjaair@gmail.com?Subject=Escribe%20el%20asunto%20del%20mail">Correo</a>.
+		  </p>
+		  <p>
+		    Además de programar, disfruto montar bicicleta, salir a caminar e ir al cine.
+		  </p>
+    </div>
+    <div x-show="tab === 'en'"
+			x-transition:enter="animate__animated animate__fadeIn"
+    >
+		  <h1>Hi.</h1>
+		  <p style="font-weight:500; font-size:2.2em">
+		    My name is <strong>Eddy</strong> <strong>Rufino</strong>.
+		  </p>
+		  <p>
+		    I am a web developer focused on creating and building cool projects using laravel <a href="https://laravel.com/" target="_blank">Laravel</a> y
+		    <a href="https://vuejs.org" target="_blank">Vue.js</a>.
+		    Most of my work is open source and publicly available at 
+		    <a href="https://github.com/eddyrufino" target="_blank">GitHub</a>.
+		  </p>
+		  <p>
+		    Maybe you want to follow me on 
+		    <a href="https://twitter.com/rufino_eddy" target="_blank">Twitter</a> y
+		    <a href="https://medium.com/@eddyrufino" target="_blank">Medium</a>
+		    so that you have more updated content. In case you have any questions you can send me a <a href="mailto:eddyjaair@gmail.com?Subject=Escribe%20el%20asunto%20del%20mail">E-mail</a>.
+		  </p>
+		  <p>
+		    In addition to programming, I enjoy riding my bike, going for walks, and going to the movies.
+		  </p>
+    </div>
+	</div>
 </body>
 </html>
